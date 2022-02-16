@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+<SelectDialog
+ title="Frete"
+ items = "{/FreteSet}"
+ contentHeight="50%"
+ search=".onValueHelpSearch"
+ confirm=".onValueHelpCloseFrete"
+ cancel=".onValueHelpCloseFrete">
+    <StandardListItem 
+        icon="sap-icon://shipping-status"
+        iconDensityAware="false"
+        iconInset="false"
+        title="{Id}"
+        description="{Name}">
+    </StandardListItem>    
+</SelectDialog>
+
+</core:FragmentDefinition>

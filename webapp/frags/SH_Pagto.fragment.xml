@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+<SelectDialog
+ title="Condição de Pagamento"
+ items = "{/CondPagtoSet}"
+ contentHeight="50%"
+ search=".onValueHelpSearch"
+ confirm=".onValueHelpClosePagto"
+ cancel=".onValueHelpClosePagto">
+    <StandardListItem 
+        icon="sap-icon://sales-quote"
+        iconDensityAware="false"
+        iconInset="false"
+        title="{Id}"
+        description="{Name}">
+    </StandardListItem>    
+</SelectDialog>
+
+</core:FragmentDefinition>

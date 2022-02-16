@@ -1,0 +1,209 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "br.com.esale.echosale",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "ach": "ach",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZGW_SD_PROJETO_01_SRV",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
+        }
+      }
+	}
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://task",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "rootView": {
+      "viewName": "br.com.esale.echosale.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.66.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "br.com.esale.echosale.i18n.i18n"
+        }
+      },
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			}
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "br.com.esale.echosale.view",
+        "controlAggregation": "midColumnPages",
+        "controlId": "flexibleColumnLayout",
+        "clearControlAggregation": false
+      },
+      "routes": [
+
+        {
+          "name": "Clientes",
+          "pattern": "",
+          "target": [
+               "clientes",
+               "clientemenu"
+            ]
+        }, 
+        
+        {
+          "name": "ClienteMenu",
+          "pattern": "menu/{obj}",
+          "target": [
+              "clientes", 
+              "clientemenu"
+            ]
+        },
+        {
+            "name": "Master",
+            "pattern": "master/{objMaster}",
+            "target": [
+                "master", 
+                "detail"
+            ]        
+        },
+        {
+            "name": "Detail",
+            "pattern": "detail/{objDetail}",
+            "target": [
+                "master", 
+                "detail" 
+            ]
+        },
+        {
+            "name": "Materiais",
+            "pattern": "materiais",
+            "target": [
+                "materiais",
+                "carrinho"
+            ]
+        },
+        {
+            "name": "Checkout",
+            "pattern": "checkout",
+            "target": [
+                "checkout"
+            ]
+         },
+         {
+            "name": "Carrinho",
+            "pattern": "carrinho",
+            "target": [
+                "carrinho"
+            ]
+        },
+        {
+          "name": "RouteApp",
+          "pattern": "RouteApp",
+          "target": [
+              "TargetApp"
+            ]
+        }
+      ],
+
+      "targets": {
+
+        "clientes": {                    
+          "viewName": "Clientes",
+          "controlAggregation": "beginColumnPages"                    
+        },
+        
+        "clientemenu": {                    
+          "viewName": "ClienteMenu",
+          "controlAggregation": "midColumnPages"    
+        },
+         "notFound": {
+           "viewName": "NotFound",
+           "controlAggregation": "midColumnPages"
+        },        
+         "notFoundPedido": {
+          "viewName": "NotFoundPedido",
+          "controlAggregation": "midColumnPages"
+        },
+        "master": {
+          "viewName": "Master",
+          "controlAggregation": "beginColumnPages"
+        },       
+        "detail": {
+         "viewName": "Detail",
+         "controlAggregation": "midColumnPages"
+        },
+        "materiais": {
+         "viewName": "Materiais",
+         "controlAggregation": "beginColumnPages"
+        },     
+        "carrinho": {
+         "viewName": "Carrinho",
+         "controlAggregation": "midColumnPages"
+        },
+        "checkout": {
+         "viewName": "Checkout",
+         "controlAggregation": "beginColumnPages"
+        },	   
+        "message": {
+         "viewName": "Message",
+         "controlAggregation": "beginColumnPages"
+        },        
+        "TargetApp": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "App",
+          "viewName": "App"
+        }
+      }
+    }
+  }
+}

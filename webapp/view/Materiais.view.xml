@@ -1,0 +1,33 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" controllerName="br.com.esale.echosale.controller.Materiais">
+    
+    <Page id="pageMateriais" title="{i18n>titleMateriais}" backgroundDesign="Solid">
+        <headerContent>
+            <Button icon="sap-icon://home" press=".onBack" visible="{appView>/smallScreenMode}"/>
+        </headerContent>
+        
+	   <content>
+        <List noDataText="Drop list items here" id="materiaisList" items="{/MaterialSet}">
+        <items>
+            <ObjectListItem type="Active" press="onAddToCart" title="{Id}" number="{ parts:[ {path: 'Price'}, {path: 'Currency'} ], type:'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }" numberUnit="eur" id="item1" intro="{i18n>LabelCentro} {Center}">
+                <attributes>
+                    <ObjectAttribute text="{Name}" id="attribute0"/>
+                </attributes>
+                <firstStatus>
+                    <ObjectStatus text="{Unit}" id="status0" state="Warning"/>
+                </firstStatus>
+                <secondStatus>
+                    <ObjectStatus text="second status text" id="status1"/>
+                </secondStatus></ObjectListItem>
+        </items>
+        </List>
+        </content>
+        
+	   <subHeader>
+        <Bar id="bar0">
+            <contentLeft>
+                <SearchField xmlns="sap.m" search="onSearchMateriais" placeholder="Search for ..." id="field0"/>
+            </contentLeft>
+        </Bar>
+        </subHeader>
+    </Page>
+</mvc:View>

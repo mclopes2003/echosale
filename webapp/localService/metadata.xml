@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_SD_PROJETO_01_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Cliente" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Address" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="CotacaoSet" Relationship="ZGW_SD_PROJETO_01_SRV.ClienteToCotacao" FromRole="FromRole_ClienteToCotacao" ToRole="ToRole_ClienteToCotacao"/>
+                <NavigationProperty Name="PedidoSet" Relationship="ZGW_SD_PROJETO_01_SRV.ClienteToPedido" FromRole="FromRole_ClienteToPedido" ToRole="ToRole_ClienteToPedido"/>
+            </EntityType>
+            <EntityType Name="Material" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Center" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="CotacaoItemSet" Relationship="ZGW_SD_PROJETO_01_SRV.MaterialToCotacaoItem" FromRole="FromRole_MaterialToCotacaoItem" ToRole="ToRole_MaterialToCotacaoItem"/>
+                <NavigationProperty Name="PedidoItemSet" Relationship="ZGW_SD_PROJETO_01_SRV.MaterialToPedidoItem" FromRole="FromRole_MaterialToPedidoItem" ToRole="ToRole_MaterialToPedidoItem"/>
+            </EntityType>
+            <EntityType Name="CondPagto" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="CotacaoSet" Relationship="ZGW_SD_PROJETO_01_SRV.CondPagtoToCotacao" FromRole="FromRole_CondPagtoToCotacao" ToRole="ToRole_CondPagtoToCotacao"/>
+                <NavigationProperty Name="PedidoSet" Relationship="ZGW_SD_PROJETO_01_SRV.CondPagtoToPedido" FromRole="FromRole_CondPagtoToPedido" ToRole="ToRole_CondPagtoToPedido"/>
+            </EntityType>
+            <EntityType Name="Frete" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="PedidoSet" Relationship="ZGW_SD_PROJETO_01_SRV.FreteToPedido" FromRole="FromRole_FreteToPedido" ToRole="ToRole_FreteToPedido"/>
+                <NavigationProperty Name="CotacaoSet" Relationship="ZGW_SD_PROJETO_01_SRV.FreteToCotacao" FromRole="FromRole_FreteToCotacao" ToRole="ToRole_FreteToCotacao"/>
+            </EntityType>
+            <EntityType Name="Cotacao" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TotValue" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="CustomerId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShippingId" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="RetornoSet" Relationship="ZGW_SD_PROJETO_01_SRV.CotacaoToRetorno" FromRole="FromRole_CotacaoToRetorno" ToRole="ToRole_CotacaoToRetorno"/>
+                <NavigationProperty Name="CotacaoItemSet" Relationship="ZGW_SD_PROJETO_01_SRV.CotacaoToCotacaoItem" FromRole="FromRole_CotacaoToCotacaoItem" ToRole="ToRole_CotacaoToCotacaoItem"/>
+                <NavigationProperty Name="CondPagto" Relationship="ZGW_SD_PROJETO_01_SRV.CondPagtoToCotacao" FromRole="ToRole_CondPagtoToCotacao" ToRole="FromRole_CondPagtoToCotacao"/>
+                <NavigationProperty Name="Frete" Relationship="ZGW_SD_PROJETO_01_SRV.FreteToCotacao" FromRole="ToRole_FreteToCotacao" ToRole="FromRole_FreteToCotacao"/>
+                <NavigationProperty Name="Cliente" Relationship="ZGW_SD_PROJETO_01_SRV.ClienteToCotacao" FromRole="ToRole_ClienteToCotacao" ToRole="FromRole_ClienteToCotacao"/>
+            </EntityType>
+            <EntityType Name="CotacaoItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Item"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialId" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Material" Relationship="ZGW_SD_PROJETO_01_SRV.MaterialToCotacaoItem" FromRole="ToRole_MaterialToCotacaoItem" ToRole="FromRole_MaterialToCotacaoItem"/>
+            </EntityType>
+            <EntityType Name="Pedido" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TotValue" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="CustomerId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShippingId" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Cliente" Relationship="ZGW_SD_PROJETO_01_SRV.ClienteToPedido" FromRole="ToRole_ClienteToPedido" ToRole="FromRole_ClienteToPedido"/>
+                <NavigationProperty Name="CondPagto" Relationship="ZGW_SD_PROJETO_01_SRV.CondPagtoToPedido" FromRole="ToRole_CondPagtoToPedido" ToRole="FromRole_CondPagtoToPedido"/>
+                <NavigationProperty Name="Frete" Relationship="ZGW_SD_PROJETO_01_SRV.FreteToPedido" FromRole="ToRole_FreteToPedido" ToRole="FromRole_FreteToPedido"/>
+                <NavigationProperty Name="PedidoItemSet" Relationship="ZGW_SD_PROJETO_01_SRV.PedidoToPedidoItem" FromRole="FromRole_PedidoToPedidoItem" ToRole="ToRole_PedidoToPedidoItem"/>
+                <NavigationProperty Name="RetornoSet" Relationship="ZGW_SD_PROJETO_01_SRV.PedidoToRetorno" FromRole="FromRole_PedidoToRetorno" ToRole="ToRole_PedidoToRetorno"/>
+            </EntityType>
+            <EntityType Name="PedidoItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="Item"/>
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MaterialId" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Material" Relationship="ZGW_SD_PROJETO_01_SRV.MaterialToPedidoItem" FromRole="ToRole_MaterialToPedidoItem" ToRole="FromRole_MaterialToPedidoItem"/>
+            </EntityType>
+            <EntityType Name="Retorno" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Type"/>
+                    <PropertyRef Name="Message"/>
+                </Key>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="MaterialToCotacaoItem" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Material" Multiplicity="1" Role="FromRole_MaterialToCotacaoItem"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.CotacaoItem" Multiplicity="*" Role="ToRole_MaterialToCotacaoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_MaterialToCotacaoItem">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_MaterialToCotacaoItem">
+                        <PropertyRef Name="MaterialId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaterialToPedidoItem" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Material" Multiplicity="1" Role="FromRole_MaterialToPedidoItem"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.PedidoItem" Multiplicity="*" Role="ToRole_MaterialToPedidoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_MaterialToPedidoItem">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_MaterialToPedidoItem">
+                        <PropertyRef Name="MaterialId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="PedidoToPedidoItem" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Pedido" Multiplicity="1" Role="FromRole_PedidoToPedidoItem"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.PedidoItem" Multiplicity="*" Role="ToRole_PedidoToPedidoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_PedidoToPedidoItem">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_PedidoToPedidoItem">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="PedidoToRetorno" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Pedido" Multiplicity="1" Role="FromRole_PedidoToRetorno"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.Retorno" Multiplicity="*" Role="ToRole_PedidoToRetorno"/>
+            </Association>
+            <Association Name="CotacaoToCotacaoItem" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Cotacao" Multiplicity="1" Role="FromRole_CotacaoToCotacaoItem"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.CotacaoItem" Multiplicity="*" Role="ToRole_CotacaoToCotacaoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CotacaoToCotacaoItem">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CotacaoToCotacaoItem">
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CotacaoToRetorno" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Cotacao" Multiplicity="1" Role="FromRole_CotacaoToRetorno"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.Retorno" Multiplicity="*" Role="ToRole_CotacaoToRetorno"/>
+            </Association>
+            <Association Name="CondPagtoToCotacao" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.CondPagto" Multiplicity="1" Role="FromRole_CondPagtoToCotacao"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.Cotacao" Multiplicity="*" Role="ToRole_CondPagtoToCotacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CondPagtoToCotacao">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CondPagtoToCotacao">
+                        <PropertyRef Name="PaymentId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CondPagtoToPedido" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.CondPagto" Multiplicity="1" Role="FromRole_CondPagtoToPedido"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.Pedido" Multiplicity="*" Role="ToRole_CondPagtoToPedido"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CondPagtoToPedido">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CondPagtoToPedido">
+                        <PropertyRef Name="PaymentId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="FreteToCotacao" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Frete" Multiplicity="1" Role="FromRole_FreteToCotacao"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.Cotacao" Multiplicity="*" Role="ToRole_FreteToCotacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_FreteToCotacao">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_FreteToCotacao">
+                        <PropertyRef Name="ShippingId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="FreteToPedido" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Frete" Multiplicity="1" Role="FromRole_FreteToPedido"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.Pedido" Multiplicity="*" Role="ToRole_FreteToPedido"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_FreteToPedido">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_FreteToPedido">
+                        <PropertyRef Name="ShippingId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ClienteToPedido" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Cliente" Multiplicity="1" Role="FromRole_ClienteToPedido"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.Pedido" Multiplicity="*" Role="ToRole_ClienteToPedido"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ClienteToPedido">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ClienteToPedido">
+                        <PropertyRef Name="CustomerId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ClienteToCotacao" sap:content-version="1">
+                <End Type="ZGW_SD_PROJETO_01_SRV.Cliente" Multiplicity="1" Role="FromRole_ClienteToCotacao"/>
+                <End Type="ZGW_SD_PROJETO_01_SRV.Cotacao" Multiplicity="*" Role="ToRole_ClienteToCotacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ClienteToCotacao">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ClienteToCotacao">
+                        <PropertyRef Name="CustomerId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZGW_SD_PROJETO_01_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ClienteSet" EntityType="ZGW_SD_PROJETO_01_SRV.Cliente" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="MaterialSet" EntityType="ZGW_SD_PROJETO_01_SRV.Material" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CondPagtoSet" EntityType="ZGW_SD_PROJETO_01_SRV.CondPagto" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="FreteSet" EntityType="ZGW_SD_PROJETO_01_SRV.Frete" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CotacaoSet" EntityType="ZGW_SD_PROJETO_01_SRV.Cotacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="CotacaoItemSet" EntityType="ZGW_SD_PROJETO_01_SRV.CotacaoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PedidoSet" EntityType="ZGW_SD_PROJETO_01_SRV.Pedido" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="PedidoItemSet" EntityType="ZGW_SD_PROJETO_01_SRV.PedidoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="RetornoSet" EntityType="ZGW_SD_PROJETO_01_SRV.Retorno" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="CotacaoToCotacaoItemSet" Association="ZGW_SD_PROJETO_01_SRV.CotacaoToCotacaoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CotacaoSet" Role="FromRole_CotacaoToCotacaoItem"/>
+                    <End EntitySet="CotacaoItemSet" Role="ToRole_CotacaoToCotacaoItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ClienteToPedidoSet" Association="ZGW_SD_PROJETO_01_SRV.ClienteToPedido" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ClienteSet" Role="FromRole_ClienteToPedido"/>
+                    <End EntitySet="PedidoSet" Role="ToRole_ClienteToPedido"/>
+                </AssociationSet>
+                <AssociationSet Name="CotacaoToRetornoSet" Association="ZGW_SD_PROJETO_01_SRV.CotacaoToRetorno" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CotacaoSet" Role="FromRole_CotacaoToRetorno"/>
+                    <End EntitySet="RetornoSet" Role="ToRole_CotacaoToRetorno"/>
+                </AssociationSet>
+                <AssociationSet Name="PedidoToPedidoItemSet" Association="ZGW_SD_PROJETO_01_SRV.PedidoToPedidoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PedidoSet" Role="FromRole_PedidoToPedidoItem"/>
+                    <End EntitySet="PedidoItemSet" Role="ToRole_PedidoToPedidoItem"/>
+                </AssociationSet>
+                <AssociationSet Name="PedidoToRetornoSet" Association="ZGW_SD_PROJETO_01_SRV.PedidoToRetorno" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="PedidoSet" Role="FromRole_PedidoToRetorno"/>
+                    <End EntitySet="RetornoSet" Role="ToRole_PedidoToRetorno"/>
+                </AssociationSet>
+                <AssociationSet Name="MaterialToPedidoItemSet" Association="ZGW_SD_PROJETO_01_SRV.MaterialToPedidoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MaterialSet" Role="FromRole_MaterialToPedidoItem"/>
+                    <End EntitySet="PedidoItemSet" Role="ToRole_MaterialToPedidoItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ClienteToCotacaoSet" Association="ZGW_SD_PROJETO_01_SRV.ClienteToCotacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ClienteSet" Role="FromRole_ClienteToCotacao"/>
+                    <End EntitySet="CotacaoSet" Role="ToRole_ClienteToCotacao"/>
+                </AssociationSet>
+                <AssociationSet Name="FreteToPedidoSet" Association="ZGW_SD_PROJETO_01_SRV.FreteToPedido" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FreteSet" Role="FromRole_FreteToPedido"/>
+                    <End EntitySet="PedidoSet" Role="ToRole_FreteToPedido"/>
+                </AssociationSet>
+                <AssociationSet Name="MaterialToCotacaoItemSet" Association="ZGW_SD_PROJETO_01_SRV.MaterialToCotacaoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MaterialSet" Role="FromRole_MaterialToCotacaoItem"/>
+                    <End EntitySet="CotacaoItemSet" Role="ToRole_MaterialToCotacaoItem"/>
+                </AssociationSet>
+                <AssociationSet Name="CondPagtoToCotacaoSet" Association="ZGW_SD_PROJETO_01_SRV.CondPagtoToCotacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CondPagtoSet" Role="FromRole_CondPagtoToCotacao"/>
+                    <End EntitySet="CotacaoSet" Role="ToRole_CondPagtoToCotacao"/>
+                </AssociationSet>
+                <AssociationSet Name="FreteToCotacaoSet" Association="ZGW_SD_PROJETO_01_SRV.FreteToCotacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FreteSet" Role="FromRole_FreteToCotacao"/>
+                    <End EntitySet="CotacaoSet" Role="ToRole_FreteToCotacao"/>
+                </AssociationSet>
+                <AssociationSet Name="CondPagtoToPedidoSet" Association="ZGW_SD_PROJETO_01_SRV.CondPagtoToPedido" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CondPagtoSet" Role="FromRole_CondPagtoToPedido"/>
+                    <End EntitySet="PedidoSet" Role="ToRole_CondPagtoToPedido"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://4hana.cloud:50000/sap/opu/odata/sap/ZGW_SD_PROJETO_01_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://4hana.cloud:50000/sap/opu/odata/sap/ZGW_SD_PROJETO_01_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

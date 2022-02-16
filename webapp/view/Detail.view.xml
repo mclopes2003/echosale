@@ -1,0 +1,102 @@
+<mvc:View xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" controllerName="br.com.esale.echosale.controller.Detail">
+    <semantic:SemanticPage id="page" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}" showFooter="false">
+        <semantic:titleHeading>
+            <Title text="{i18n>LabelPedido} {Id}"/>
+       </semantic:titleHeading>
+        <semantic:headerContent>
+
+        <FlexBox wrap="Wrap" fitContainer="true">
+        
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    
+                    <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <Label text="{i18n>LabelCliente}" class="sapUiTinyMarginEnd"/>
+                        <Text id="textIdCustomer" text="{Id}"/>
+                    </HBox>
+
+                    <HBox class="sapUiTinyMarginBottom" renderType="Bare">
+                        <Text id="textCustomer" text="{Name}" />
+                    </HBox>
+
+                    <HBox>
+                        <Label text="{i18n>LabelData}" class="sapUiTinyMarginEnd"/>
+                        <Text text="{path: 'CreationDate',formatter: '.Formatter.date'}"/>
+                    </HBox>
+                </VBox>
+
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    <Title text="{i18n>LabelPagamento}" class="sapUiTinyMarginBottom"/>
+                    <ObjectStatus text="{Name}" id="oStatusPay" state="Error" class="sapMObjectStatusLarge"/>
+                </VBox>
+
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    <Title text="{i18n>LabelStatus}" class="sapUiTinyMarginBottom"/>
+                    <ObjectStatus text="{path: 'Status',formatter: '.Formatter.globalStatusText'}" state="{path: 'Status',formatter: '.Formatter.globalStatusState'}" class="sapMObjectStatusLarge"/>
+                </VBox>
+
+                <VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    <Title text="{i18n>LabelEntrega}" class="sapUiTinyMarginBottom"/>
+                    <ObjectStatus text="{Name}" id="oStatusShip" state="Warning" icon="sap-icon://shipping-status" class="sapMObjectStatusLarge"/>
+                </VBox>
+
+                <VBox class="sapUiLargeMarginEnd">
+                    <Title text="{i18n>LabelValorTotal}" class="sapUiTinyMarginBottom"/>
+                    <ObjectNumber number="{ parts:[ {path:'TotValue'},{path:'Currency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false}   }" unit="{Currency}" emphasized="false" class="sapMObjectNumberLarge"/>
+                </VBox>
+            </FlexBox>
+            
+        </semantic:headerContent>
+        <semantic:content>
+            
+    <Table updateFinished="onUpdateFinished" items="{PedidoItemSet}" noDataText="{i18n>NoDataTable}" id="table0">
+                                    <columns>
+                                        <Column hAlign="Left" minScreenWidth="Tablet">
+                                            <Text text="{i18n>Item}"/>
+                                        </Column>
+
+                                        <Column hAlign="Left" minScreenWidth="Tablet">
+                                            <Text text="{i18n>Id}"/>
+                                        </Column>
+                                        
+                                        <Column hAlign="Left" minScreenWidth="Tablet">
+                                            <Text text="{i18n>MaterialId}"/>
+                                        </Column>
+                                        <Column hAlign="Left" minScreenWidth="Tablet">
+                                            <Text text="{i18n>Quantity}"/>
+                                        </Column>
+
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <ObjectAttribute text="{Item}"/>
+                                                <ObjectAttribute text="{Item}"/>
+                                                <ObjectAttribute text="{MaterialId}"/>
+                                                <ObjectAttribute text="{Quantity}"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+            
+
+            
+        </semantic:content>
+        
+        <semantic:titleMainAction>
+        </semantic:titleMainAction>
+        
+        <semantic:closeAction>
+        </semantic:closeAction>
+        
+        <semantic:fullScreenAction>
+        </semantic:fullScreenAction>
+        
+        <semantic:exitFullScreenAction>
+        </semantic:exitFullScreenAction>
+
+        <!-- Custom Footer Content-->
+        <semantic:footerCustomActions>      
+        </semantic:footerCustomActions>
+
+    </semantic:SemanticPage>
+</mvc:View>

@@ -1,0 +1,39 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="br.com.esale.echosale.controller.Clientes" displayBlock="true">
+    
+        <Page id="page" title="{i18n>titleClientes}" backgroundDesign="Solid">
+             <content>
+                     
+             <List noDataText="Drop list items here" id="listClientes" items="{/ClienteSet}" updateFinished="onUpdateFinished" growing="true" growingThreshold="15">
+                     
+             <items>
+                     
+                 <ObjectListItem type="Active" press="onSelectionChange" title="{Name}" number="{Id}" id="item1" icon="sap-icon://customer">
+                     
+                     <attributes>
+                     
+                         <ObjectAttribute text="{Address}" id="attribute0"/>
+                     
+                     </attributes></ObjectListItem>
+                     
+             </items>
+                     
+             </List>
+                     
+             </content>
+               
+        <subHeader>
+               
+            <Bar id="bar0">
+               
+                <contentLeft>
+               
+                    <SearchField xmlns="sap.m" search="onSearch" placeholder="Search for ..." id="field0"/>
+               
+                </contentLeft>
+               
+            </Bar>
+               
+        </subHeader>
+               
+        </Page>
+</mvc:View>

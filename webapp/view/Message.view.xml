@@ -1,0 +1,18 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+    controllerName="br.com.sdlubke.cartlubke.controller.Message" xmlns:html="http://www.w3.org/1999/xhtml">
+    <App>
+        <pages>
+            <Page title="{i18n>appTitle}">
+                <content>
+                    <MessagePage showHeader="false" text="{MDL_Resposta>/Message}" enableFormattedText="true" description="{MDL_Resposta>/Description}"
+                        icon="sap-icon://sales-order">
+                        <buttons>
+                            <Button text="{i18n>messageButtonNovo}" press="handleBtnNovo"></Button>
+                            <Button text="{i18n>messageButtonPedidos}" press="handleBtnPedidos"></Button>
+                        </buttons>
+                    </MessagePage>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

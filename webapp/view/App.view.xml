@@ -1,0 +1,20 @@
+<mvc:View 
+controllerName="br.com.esale.echosale.controller.App"
+displayBlock="true"
+xmlns="sap.m"
+xmlns:f="sap.f"
+xmlns:mvc="sap.ui.core.mvc">
+<App
+id="app"
+class="sapUiDemoCart">
+        <f:FlexibleColumnLayout
+            id="flexibleColumnLayout"
+            busy="{MDL_FCL>/busy}"
+            busyIndicatorDelay="{MDL_FCL>/delay}"
+            layout="{MDL_FCL>/layout}"
+            backgroundDesign="Translucent"
+            class="sapUiDemoCart"
+            stateChange=".onStateChange">
+        </f:FlexibleColumnLayout>
+</App>
+</mvc:View>

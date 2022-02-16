@@ -1,0 +1,43 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="br.com.esale.echosale.controller.ClienteMenu" displayBlock="true">
+    
+        <Page id="page" title="{i18n>titleMenuClientes}" backgroundDesign="Solid">
+             <content>
+                     
+             <ObjectHeader xmlns="sap.m" title="{Name}" number="{Id}" id="header0" icon="sap-icon://customer">
+                     
+                 <attributes>
+                     
+                     <ObjectAttribute text="{Address}" id="attribute0"/>
+                     
+                     
+                     
+                 </attributes>
+                     
+                 </ObjectHeader>
+                     
+             <List noDataText="Drop list items here" id="list0">
+                     
+             <items>
+                     
+                 <!-- Opcao 1  -->
+                 <ObjectListItem type="Active" title="{i18n>menuTitle1}" press="handleMateriais" icon="sap-icon://cart" >
+                     <attributes>
+                         <ObjectAttribute text="{i18n>menuOpcao1}"/>                    
+                     </attributes>
+                 </ObjectListItem>
+
+                <!-- Opcao 2  -->
+                 <ObjectListItem type="Active" title="{i18n>menuTitle2}" press="handlePedidos" icon="sap-icon://sales-order" >
+                     <attributes>
+                         <ObjectAttribute text="{i18n>menuOpcao2}"/>                    
+                     </attributes>
+                 </ObjectListItem>
+                     
+             </items>
+                     
+             </List>
+                     
+             </content>
+               
+        </Page>
+</mvc:View>
